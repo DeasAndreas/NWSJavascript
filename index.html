@@ -8,38 +8,26 @@
 
 
     <script type="text/javascript">
-        var toto = {};
-        var toto ={
-            couleur:"rouge",
-            "taille": 22
+        // object.prototype
 
-        };
-        document.write(toto.couleur);
-        document.write(toto["couleur"]);
+        if (typeof Object.create !== 'function' ){
+            Object.create= function (truc) {
+                var F = function () {};
+                F.prototype =truc;
+                return new F();
+            }
+        }
+        var machin =Object.create("salut");
 
+        // Notion de Réflexion
 
-        var titi;
-        console.log(titi.coucou); // -> undifined
+        typeof vol.toString(); // function
+        typeof vol.constructor(); // function
 
-        var x =toto["couleur"] || "erreur";
+        vol.hasOwnProperty('couleur'); // true
+        vol.hasOwnProperty('constructor'); // false
 
-        var vol;
-
-        vol.horaire // -> undifined
-        vol.horaire.siege // TypeError
-        var truc = vol.horaire && vol.horaire.siege // -> undifined
-
-        toto.couleur = "jaune";
-        toto.blabla = "edwin";
-
-        var x = toto;
-        x.prenom = "Thomas";
-        var machin = toto.prenom;
-
-
-
-
-
+        delete  toto.couleur;
 
     </script>
 
