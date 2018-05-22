@@ -1,50 +1,58 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Cours JavaScript</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title> Cours Javascript</title>
 </head>
 <body>
+<form	name="Saisie" method="post" action="javascript:Calcul();">
 
+    <table>
 
-    <script type="text/javascript">
-        // object.prototype
+        <tr>
+            <th>	Montant <br />du prêt</th>
+            <th>	Durée en<br />années</th>
+            <th>	Taux    <br />Entiers . Décimales</th>
+        </tr>
 
-        if (typeof Object.create !== 'function' ){
-            Object.create= function (truc) {
-                var F = function () {};
-                F.prototype =truc;
-                return new F();
+        <tr>
+            <th>	<input 	type="text" size='11' 	name="Montant" /> </th>
+            <th>	<input 	type="text" size='2'  	name="Duree" /> </th>
+            <th>	<input 	type="text" size='7'  	name="Taux" /> </th>
+            <th>	<input 	type="submit"  	     	name="Lancer" value="cliquer ici pour&#13;&#10;Lancer le Calcul" /> </th>
+        </tr>
+
+    </table>
+</form>
+<div id="result"></div>
+
+    <script type=text/javascript>
+
+        function Calcul()
+        {	let Af=Number(document.Saisie.Montant.value);
+            if ( Af<1 )
+                alert ("montant du prèt erroné");
+            else	{	let Y=Number(document.Saisie.Duree.value);
+                if ( Y<1 || Y>35 )
+                    alert("Durée erronée");
+                else	{	let Ir=Number(document.Saisie.Taux.value);
+                    if ( Ir<1 || Ir>20 )
+                        alert("Taux erroné");
+                    else	{	let Nf = Y * 12;
+                        let Rf = (Ir / 1200);
+                        let P1 = Af * ( Rf / ( 1 - ( 1 / ( Math.pow ( ( 1 + Rf ), Nf ) ) ) ) ) ;
+                        let Pf = Math.floor ( ( P1 + 0.005 ) * 100) / 100;
+                        let impr=	"<"+"br />Prèt de "+
+                            document.Saisie.Montant.value+ " sur "+
+                            document.Saisie.Duree.value+ " ans, au taux de "+
+                            document.Saisie.Taux.value+ "% => Echéances de " + Pf+ " par mois<"+"br /><"+"br />";
+
+                        impr+=("<"+"tr><"+"td></"+"td><"+"td></"+"td><"+"td></"+"td>");
+                        document.getElementById("result").innerHTML=impr;
+                    }
+                }
             }
         }
-        var machin =Object.create("salut");
-
-        // Notion de Réflexion
-
-        typeof vol.toString(); // function
-        typeof vol.constructor(); // function
-
-        vol.hasOwnProperty('couleur'); // true
-        vol.hasOwnProperty('constructor'); // false
-
-        delete  toto.couleur;
-
-        var turtle; // Marc-alban
-        turtle ="coucou";
-
-        function edwin() {
-            alert (turtle);
-        }
-         edwin();
-
-        var superVariable = {};
-
-        superVariable.toto ={
-            couleur: "rouge",
-            longueur: 48
-        };
-
     </script>
-
 </body>
 </html>
