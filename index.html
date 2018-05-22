@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Cours JavaScript</title>
 </head>
 <body>
+
+
+    <script type="text/javascript">
+        var toto = {};
+        var toto ={
+            couleur:"rouge",
+            "taille": 22
+
+        };
+        document.write(toto.couleur);
+        document.write(toto["couleur"]);
+
+
+        var titi;
+        console.log(titi.coucou); // -> undifined
+
+        var x =toto["couleur"] || "erreur";
+
+        var vol;
+
+        vol.horaire // -> undifined
+        vol.horaire.siege // TypeError
+        var truc = vol.horaire && vol.horaire.siege // -> undifined
+
+        toto.couleur = "jaune";
+        toto.blabla = "edwin";
+
+        var x = toto;
+        x.prenom = "Thomas";
+        var machin = toto.prenom;
+
+
+
+
+
+
+    </script>
 
 </body>
 </html>
